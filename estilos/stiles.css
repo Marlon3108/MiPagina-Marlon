@@ -1,0 +1,65 @@
+:root{
+    --grisaseo: #464646;
+    --violeta: #a905b6;
+    --rojizo: #E53A3A;
+    --blanco: #ffffff;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif; /* Aplica a todo el proyecto la fuente */
+    color: var(--grisaseo);
+}
+
+h1.titnom{
+    text-align: center;
+    font-size: 3.8rem; /* 1rem = 10px */
+    color: var(--grisaseo);
+}
+
+h1.titnom span {
+    font-size: 2rem;
+}
+
+/*Creación de una clase contenedora de todo el proyecto para que quede centrado*/
+.contenerdor{
+    width: 120rem;
+    /*
+    margin-top: 0rem;
+    margin-right: auto;
+    margin-bottom: 0rem;
+    margin-left: auto;
+
+    margin: 0rem auto 0rem auto; Esto hace lo mismo de arriba
+    Si hay dos valores que son igual se puede simplificar más
+    */
+    margin: 0rem auto; /*Css dice que el primero es para arriba y abajo y el segundo izquierda y derecha*/
+
+}
+
+.fondoNav{
+    background-color: var(--violeta);
+}
+
+.navPrincipal{
+    display: flex;
+    justify-content: space-between; 
+}
+
+.navPrincipal a{
+    color: var(--blanco);
+    text-decoration: none;/*Quitar la linea de los enlaces*/
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem;/*Esto valor lo toma en todas las direcciones
+    Si lo quiero personalizado al alguno de los lados ahí si debo
+    colocar los 4 valores*/
+}
+
+.navPrincipal a:hover{
+    background-color: var(--grisaseo);
+}
