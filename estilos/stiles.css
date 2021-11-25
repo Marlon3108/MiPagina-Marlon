@@ -63,3 +63,7 @@ h1.titnom span {
 .navPrincipal a:hover{
     background-color: var(--grisaseo);
 }
+
+@media (min-width: 480px) {
+    
+}
