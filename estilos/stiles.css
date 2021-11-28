@@ -3,17 +3,40 @@
     --violeta: #a905b6;
     --rojizo: #E53A3A;
     --blanco: #ffffff;
-}
+} /*Definir mis variables para mas tarde usarlas*/
 
 html{
     font-size: 62.5%;
+    box-sizing: border-box; /*Soluciona todos los problemas que ocurrian con el box sizing*/
 }
+*, *:before, *:after {
+    box-sizing: inherit;
+} /*Soluciona todos los problemas que ocurrian con el box sizing*/
 
 body{
     font-size: 16px;
     font-family: 'Source Sans Pro', sans-serif; /* Aplica a todo el proyecto la fuente */
     color: var(--grisaseo);
 }
+
+/*Para tener algo mas general en el codigo osea, que para todos los h1 o los p aplique algo en especial se puede
+definir desde un principio y asi siempre se usara esa configaracion en todo lo que defina de aqui en adelante
+EJ:
+h1 {
+    font-size: 3.8rem; 1rem = 10px
+    color: var (--grisaseo);
+}
+h2 {
+    font-size: 2.8rem; 
+}
+h3 {
+    font-size: 1.8rem; 
+}
+h1,h2,h3 {
+    text-align: center;
+}
+*/
+
 
 h1.titnom{
     text-align: center;
@@ -27,7 +50,7 @@ h1.titnom span {
 
 /*Creación de una clase contenedora de todo el proyecto para que quede centrado*/
 .contenerdor{
-    width: 120rem;
+    max-width: 120rem; /*Toma 120 como max, sino toma el 100% ya que los div por defecto tienen eso*/
     /*
     margin-top: 0rem;
     margin-right: auto;
@@ -41,21 +64,51 @@ h1.titnom span {
 
 }
 
+.botton{ /*Esta clase me sirve para los demas botones que quiera usar en la pagina y que sean iguales*/
+    background-color: var(--violeta);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 3rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    /*Esto aplica para celulares*/
+    width: 90%;
+    text-align: center;
+}
+
+@media (min-width: 768px) { 
+    .botton{
+        width: auto; /*Con esto se resetea*/
+    }
+}
+
 .fondoNav{
     background-color: var(--violeta);
 }
 
 .navPrincipal{
-    display: flex;
-    justify-content: space-between; 
+    display: flex;/*Esto coloca la posicion en horizontal*/
+    flex-direction: column; /*Esto coloca la posicion en vertical*/
+}
+
+@media (min-width: 768px) { /*Este mq hereda lo que tiene navPrincipal. Con esto lo que quiero hacer es que se modifique a cierta resolucion de pantalla*/
+    .navPrincipal{
+        flex-direction: row;/*Esto devuelve a su posicion inicial*/
+        justify-content: space-between; /*Espaciado entre las opciones*/
+    }
 }
 
 .navPrincipal a{
+    display: block; /*Esto hace que el texto tome todo el tamaño disponible*/
+    text-align: center;
     color: var(--blanco);
     text-decoration: none;/*Quitar la linea de los enlaces*/
     font-size: 2rem;
     font-weight: bold;
-    padding: 1rem;/*Esto valor lo toma en todas las direcciones
+    padding: 1rem;/*Este valor lo toma en todas las direcciones
     Si lo quiero personalizado al alguno de los lados ahí si debo
     colocar los 4 valores*/
 }
@@ -64,6 +117,32 @@ h1.titnom span {
     background-color: var(--grisaseo);
 }
 
-@media (min-width: 480px) {
-    
+.hero{
+    background-image: url(../img/professional-programmer-working-late-dark-office.jpg);/*Se usa .. para salir de una carpeta*/
+    background-repeat: no-repeat; /*No repite una imagen*/
+    background-size: cover; /*Para que la imagen tome todo el ancho disponible*/
+    height: 45.5rem;
+    padding: 2rem;
+    position: relative;
 }
+
+.contenidoHero{
+    position: absolute;
+    /*background-color: rgba(0, 0, 0, .7); Este ultimo valor es para transparencia y va de 0 a 1 esta era la anterior sintaxis*/
+    background-color: rgb(0 0 0 / 55%);/*Esta es la nueva sintaxis y la transparencia va de 0 a 100%*/
+    bottom: 0rem;
+    left: 0rem;
+    top: 0rem;
+    right: 0rem;
+    /*Esto es para jugar con la transparencia de la imagen*/
+    display: flex; /*siempre que quiera posicionar un elemento debo ponerle un display: flex al padre de ese elemento*/
+    flex-direction: column; /*Colocar la diireccion en vertical. Ya no puedo alinear con justifi content*/
+    align-items: center; /*Se centra con aling items*/
+    justify-content: center;
+    /*Este codigo centra verticalmente y horizontalmente siempre*/
+}
+
+.contenidoHero h2, .contenidoHero p{ /*Le voy a aplicar la misma regla a h2 y p asi que uso la coma*/
+    color: var(--blanco);
+}
+
