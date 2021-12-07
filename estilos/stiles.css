@@ -91,7 +91,7 @@ h1.titnom span {
 
 .navPrincipal{
     display: flex;/*Esto coloca la posicion en horizontal*/
-    flex-direction: column; /*Esto coloca la posicion en vertical*/
+    flex-direction: column; /*Esto coloca la posicion en vertical para los dispositivos moviles*/
 }
 
 @media (min-width: 768px) { /*Este mq hereda lo que tiene navPrincipal. Con esto lo que quiero hacer es que se modifique a cierta resolucion de pantalla*/
