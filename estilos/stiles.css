@@ -50,7 +50,7 @@ h1.titnom span {
 
 /*Creación de una clase contenedora de todo el proyecto para que quede centrado*/
 .contenerdor{
-    max-width: 120rem; /*Toma 120 como max, sino toma el 100% ya que los div por defecto tienen eso*/
+    max-width: 120rem; /*Toma 120 como max, sino, toma el 100% ya que los div por defecto tienen eso*/
     /*
     margin-top: 0rem;
     margin-right: auto;
