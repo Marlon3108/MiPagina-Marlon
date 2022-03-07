@@ -3,7 +3,8 @@
     --violeta: #a905b6;
     --rojizo: #E53A3A;
     --blanco: #ffffff;
-} /*Definir mis variables para mas tarde usarlas*/
+} /*Definir mis variables para mas tarde usarlas usando root(Este se usa con cualquier valor que quiera reutilizar). 
+Los que comienzan con : se les llama pseudoselectores*/
 
 html{
     font-size: 62.5%;
@@ -14,8 +15,8 @@ html{
 } /*Soluciona todos los problemas que ocurrian con el box sizing*/
 
 body{
-    font-size: 16px;
-    font-family: 'Source Sans Pro', sans-serif; /* Aplica a todo el proyecto la fuente */
+    font-size: 16px; /* 1rem = 10px */
+    font-family: 'Source Sans Pro', sans-serif; /* Aplica a todo el proyecto la fuente que yo elija*/
     color: var(--grisaseo);
 }
 
@@ -39,28 +40,31 @@ h1,h2,h3 {
 
 
 h1.titnom{
-    text-align: center;
+    text-align: center; /*Centrar texto*/
     font-size: 3.8rem; /* 1rem = 10px */
     color: var(--grisaseo);
 }
 
 h1.titnom span {
-    font-size: 2rem;
+    font-size: 2rem;/*Hacer tamaño de fuente mas pequeño*/
 }
 
 /*Creación de una clase contenedora de todo el proyecto para que quede centrado*/
-.contenerdor{
+.contenedor{
     max-width: 120rem; /*Toma 120 como max, sino, toma el 100% ya que los div por defecto tienen eso*/
     /*
-    margin-top: 0rem;
-    margin-right: auto;
-    margin-bottom: 0rem;
-    margin-left: auto;
-
+    margin-top: 0rem; (margen hacia arriba, cuanto estará separado del elemento anterior a este)
+    margin-right: auto; (margen a la derecha)
+    margin-bottom: 0rem; (margen hacia abajo)
+    margin-left: auto; (magen a la izquierda)
+    margin nos dice en que posición se va a colocar cada elemento y derecha e izquierda tiene auto para
+    que su posición se definan automaticamente, esto hace que quede centrado
+    
     margin: 0rem auto 0rem auto; Esto hace lo mismo de arriba
     Si hay dos valores que son igual se puede simplificar más
     */
-    margin: 0rem auto; /*Css dice que el primero es para arriba y abajo y el segundo izquierda y derecha*/
+    margin: 0rem auto; /*Css dice que el primero es para arriba y abajo y el segundo izquierda y derecha
+    por esta razon solo colocamos un valor que es 0rem. En otras palabras toma los 4 valores*/
 
 }
 
@@ -90,7 +94,7 @@ h1.titnom span {
 }
 
 .navPrincipal{
-    display: flex;/*Esto coloca la posicion en horizontal*/
+    display: flex;/*Esto habilita flexbox*/
     flex-direction: column; /*Esto coloca la posicion en vertical para los dispositivos moviles*/
 }
 
@@ -106,14 +110,15 @@ h1.titnom span {
     text-align: center;
     color: var(--blanco);
     text-decoration: none;/*Quitar la linea de los enlaces*/
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 2rem; /*tamaño de la fuente*/
+    font-weight: bold; /*font-weight: 700; también nos sirve porque ese fue el tamaño que importamos*/
     padding: 1rem;/*Este valor lo toma en todas las direcciones
     Si lo quiero personalizado al alguno de los lados ahí si debo
     colocar los 4 valores*/
 }
 
-.navPrincipal a:hover{
+.navPrincipal a:hover{ /*se activa cuando paso el puntero por encima. Esta es una pseudoclase que se va a
+    usar solo en este momento, por eso la creo aquí*/
     background-color: var(--grisaseo);
 }
 
