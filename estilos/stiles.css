@@ -99,15 +99,15 @@ h1.titnom span {
 }
 
 @media (min-width: 768px) { /*Este mq hereda lo que tiene navPrincipal. Con esto lo que quiero hacer es que se modifique a cierta resolucion de pantalla*/
-    .navPrincipal{
+    .navPrincipal{ /*min-width es el tamaño de pantalla en el que se va a ejecutar el código*/
         flex-direction: row;/*Esto devuelve a su posicion inicial*/
         justify-content: space-between; /*Espaciado entre las opciones*/
     }
 }
 
 .navPrincipal a{
-    display: block; /*Esto hace que el texto tome todo el tamaño disponible*/
-    text-align: center;
+    display: block; /*Esto hace que el texto tome todo el tamaño disponible. Esto lo hago para que en flexbox no ocurran errores de alineación*/
+    text-align: center; /*Alinea el texto hacia el centro*/
     color: var(--blanco);
     text-decoration: none;/*Quitar la linea de los enlaces*/
     font-size: 2rem; /*tamaño de la fuente*/
@@ -133,18 +133,16 @@ h1.titnom span {
 
 .contenidoHero{
     position: absolute;
-    /*background-color: rgba(0, 0, 0, .7); Este ultimo valor es para transparencia y va de 0 a 1 esta era la anterior sintaxis*/
+    background-color: rgba(0, 0, 0, .7); /*Este ultimo valor es para transparencia y va de 0 a 1 esta era la anterior sintaxis*/
     background-color: rgb(0 0 0 / 55%);/*Esta es la nueva sintaxis y la transparencia va de 0 a 100%*/
     bottom: 0rem;
     left: 0rem;
     top: 0rem;
-    right: 0rem;
-    /*Esto es para jugar con la transparencia de la imagen*/
+    right: 0rem; /*Esto es para jugar con la transparencia de la imagen*/
     display: flex; /*siempre que quiera posicionar un elemento debo ponerle un display: flex al padre de ese elemento*/
-    flex-direction: column; /*Colocar la diireccion en vertical. Ya no puedo alinear con justifi content*/
-    align-items: center; /*Se centra con aling items*/
-    justify-content: center;
-    /*Este codigo centra verticalmente y horizontalmente siempre*/
+    flex-direction: column; /*Coloca la direccion del elemento en vertical. Ya no puedo alinear horizontalmente con justifi content*/
+    align-items: center; /*Se centra con aling items en vez de justifi content cuando usamos flex-direction: column*/
+    justify-content: center; /*Este codigo centra verticalmente y horizontalmente siempre*/
 }
 
 .contenidoHero h2, .contenidoHero p{ /*Le voy a aplicar la misma regla a h2 y p asi que uso la coma*/
