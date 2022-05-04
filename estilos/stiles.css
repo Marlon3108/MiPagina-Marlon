@@ -3,6 +3,7 @@
     --violeta: #a905b6;
     --rojizo: #E53A3A;
     --blanco: #ffffff;
+    --grisClaro: #DFE9F3;
 } /*Definir mis variables para mas tarde usarlas usando root(Este se usa con cualquier valor que quiera reutilizar). 
 Los que comienzan con : se les llama pseudoselectores*/
 
@@ -18,6 +19,10 @@ body{
     font-size: 16px; /* 1rem = 10px */
     font-family: 'Source Sans Pro', sans-serif; /* Aplica a todo el proyecto la fuente que yo elija*/
     color: var(--grisaseo);
+    /*El color de fondo siempre va a ir en el body*/
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%); /*Un color gradiente se logra así. Dentro de los parentesis se coloca desde donde quiero
+    que empiece el degradado hasta donde termina. En este caso es de abajo hacia arriba con to top. Luego se le pasa el color que va en
+    la parte inferior y luego el de la superior y el porcentaje indica desde donde quiero que inicie con ese color*/
 }
 
 /*Para tener algo mas general en el codigo osea, que para todos los h1 o los p aplique algo en especial se puede
@@ -89,6 +94,15 @@ h1.titnom span {
     }
 }
 
+.sombra { /*Se crea esta clase para poder pegar el codigo y dar sombra a la caja contenedora que tenemos en la mitad de la página*/
+    -webkit-box-shadow: 1px 3px 5px 0px rgba(99,98,99,0.94);
+    -moz-box-shadow: 1px 3px 5px 0px rgba(99,98,99,0.94);
+    box-shadow: 1px 3px 5px 0px rgba(99,98,99,0.94);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
 .fondoNav{
     background-color: var(--violeta);
 }
@@ -129,6 +143,7 @@ h1.titnom span {
     height: 45.5rem;
     padding: 2rem;
     position: relative;
+    margin-bottom: 2rem; /*Para que se esté separado de el contenedor sombra que está debajo*/
 }
 
 .contenidoHero{
