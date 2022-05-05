@@ -164,3 +164,33 @@ h1.titnom span {
     color: var(--blanco);
 }
 
+@media (min-width: 768px) { /*Para hacerlo más responsivo en un dispositivo mas pequeño le creo este mq*/
+    .servicios {
+        display: grid; /*Activa CSS grid*/
+        /*grid-template-columns: 33.3% 33.3% 33.3%; Se define el tamaño y cantidad que quiero que tenga cada columna. En este caso tomando el cuenta 
+        que las tres columnas que necesito son mi 100% entonces con eso defino el tamaño de cada uno y debo repetirlo la cantidad de veces que quiera
+        una columna*/
+        grid-template-columns: repeat(3, 1fr);/* 1fr 1fr 1frCuando se repite no tengo necesidad de colocarlo las veces que lo haga, ya que puedo usar repeat. Esta es otra manera 
+        mas facíl de hacer lo anterior es usando fracciones que lo que hace es que de un número entero me lo divide en la cantidad de fracciones que necesito*/
+        /*grid-template-rows: 200px 800px;*/
+        /*grid: 200px 800px / 300px 300px; Esta es la forma mas corta de hacer lo anterior. La primer parte son las rows y la segunda las columns*/
+        column-gap: 1rem;
+    }
+    
+}
+
+.fondoServicio {
+
+}
+.fondoServicio h3{
+
+}
+.fondoServicio .iconoSvg{
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--violeta);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
