@@ -10,10 +10,19 @@ Los que comienzan con : se les llama pseudoselectores*/
 html{
     font-size: 62.5%;
     box-sizing: border-box; /*Soluciona todos los problemas que ocurrian con el box sizing*/
+    scroll-snap-type: y mandatory;/*Diseño para dar scroll se pone el eje y para bajar verticalmente. Luego debo ir a las secciones en donde quiero que
+    se detenga el scroll*/
 }
 *, *:before, *:after {
     box-sizing: inherit;
 } /*Soluciona todos los problemas que ocurrian con el box sizing*/
+
+.navPrincipal,
+.servicios,
+.formulario{
+    scroll-snap-align: center;
+    scroll-snap-stop: always; /*Se usan estos dos para indicar al navegador que me dirija a esta sección y que luego se detenga en esta*/
+}
 
 body{
     font-size: 16px; /* 1rem = 10px */
@@ -38,11 +47,10 @@ h2 {
 h3 {
     font-size: 1.8rem; 
 }
-h1,h2,h3 {
+*/
+h1,h2,h3 { /*Todos los h... van a estar alineados en el centro dentro de toda la página*/
     text-align: center;
 }
-*/
-
 
 h1.titnom{
     text-align: center; /*Centrar texto*/
@@ -70,7 +78,11 @@ h1.titnom span {
     */
     margin: 0rem auto; /*Css dice que el primero es para arriba y abajo y el segundo izquierda y derecha
     por esta razon solo colocamos un valor que es 0rem. En otras palabras toma los 4 valores*/
+}
 
+.contenedor h2{
+    color: var(--violeta);
+    text-transform: uppercase;
 }
 
 .botton{ /*Esta clase me sirve para los demas botones que quiera usar en la pagina y que sean iguales*/
@@ -86,12 +98,17 @@ h1.titnom span {
     /*Esto aplica para celulares*/
     width: 90%;
     text-align: center;
+    border: none; /*Esto porque estoy reutilizando botton para el formulario de contacto y input le agrega un borde que no quiero*/
 }
 
 @media (min-width: 768px) { 
     .botton{
         width: auto; /*Con esto se resetea*/
     }
+}
+
+.botton:hover { /*Esto se usa cuando me coloco sobre un enlace. Toca usarlo porque input elimina esta función despúes que lo estilizo*/
+    cursor: pointer; /*Para colocar la mano en los botones*/
 }
 
 .sombra { /*Se crea esta clase para poder pegar el codigo y dar sombra a la caja contenedora que tenemos en la mitad de la página*/
@@ -103,6 +120,27 @@ h1.titnom span {
     border-radius: 1rem;
 }
 
+/*Utilidades. Son unas lineas de codigo que podré usar de aquí en adelante donde necesite alguna especificación que contenga*/
+.widthTamañoPequeño { /*Utilidad para un ancho del 100%*/
+    width: 100%;
+}
+
+@media (min-width: 768px) { 
+    .widthTamañoPequeño{
+        width: auto;/*Con este mq lo que se va a lograr es que cuando sobrepase los 768px la propiedad que tenga como clase widthTamañoPequeño 
+        pasa a la derecha*/
+    }
+}
+
+.flexbox { /*Activar flexbox*/
+    display: flex;
+}
+
+.alinearDerecha { /*Alinea cualquier elemento al lado derecho*/
+    justify-content: flex-end;
+}
+
+/*Navegación principal*/
 .fondoNav{
     background-color: var(--violeta);
 }
@@ -164,33 +202,119 @@ h1.titnom span {
     color: var(--blanco);
 }
 
+
+/*Servicios*/
 @media (min-width: 768px) { /*Para hacerlo más responsivo en un dispositivo mas pequeño le creo este mq*/
     .servicios {
         display: grid; /*Activa CSS grid*/
-        /*grid-template-columns: 33.3% 33.3% 33.3%; Se define el tamaño y cantidad que quiero que tenga cada columna. En este caso tomando el cuenta 
+        /*grid-template-columns: 33.3% 33.3% 33.3%; Se define el tamaño y cantidad que quiero que tenga cada columna. En este caso tomando en cuenta 
         que las tres columnas que necesito son mi 100% entonces con eso defino el tamaño de cada uno y debo repetirlo la cantidad de veces que quiera
         una columna*/
-        grid-template-columns: repeat(3, 1fr);/* 1fr 1fr 1frCuando se repite no tengo necesidad de colocarlo las veces que lo haga, ya que puedo usar repeat. Esta es otra manera 
-        mas facíl de hacer lo anterior es usando fracciones que lo que hace es que de un número entero me lo divide en la cantidad de fracciones que necesito*/
-        /*grid-template-rows: 200px 800px;*/
-        /*grid: 200px 800px / 300px 300px; Esta es la forma mas corta de hacer lo anterior. La primer parte son las rows y la segunda las columns*/
-        column-gap: 1rem;
+        grid-template-columns: repeat(3, 1fr);/* 1fr 1fr 1fr Cuando se repite no tengo necesidad de colocarlo las veces que lo haga, ya que puedo usar repeat. 
+        Esta es otra manera mas facíl de hacer lo anterior es usando fracciones que lo que hace es que de un número entero me lo divide en la cantidad de 
+        fracciones que necesito
+        grid-template-rows: 200px 800px; Esto es para indicar el tamaño que va a tener la fila
+        grid: 200px 800px / 300px 300px; Esta es la forma mas corta de hacer lo anterior. La primer parte son las rows y la segunda las columns*/
+        column-gap: 1rem;/*Espaciado entre columnas*/
     }
     
 }
 
 .fondoServicio {
-
+    display: flex;/*Esto nos coloca las cosas de izquierda a derecha, como no quiero eso uso uso el flex-direction: column
+    pero al usar este ya no puedo usar justify-content para alinear ahora se debe usar align-items*/
+    flex-direction: column;
+    align-items: center;
 }
 .fondoServicio h3{
+    font-weight: normal; /*Grueso de la letra*/
+}
 
+.fondoServicio p{
+    line-height: 2; /*Interlineado de texto*/
+    text-align: center;
 }
 .fondoServicio .iconoSvg{
     height: 15rem;
     width: 15rem;
     background-color: var(--violeta);
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
+    display: flex; /*Se habilita flexbox que da acceso a justify-content y align-items*/
+    justify-content: space-evenly;
     align-items: center;
+}
+
+.formulario {
+    background-color: var(--grisaseo);
+    color: var(--blanco);
+    width: min( 60rem, 100%); /*min va a tomar o asignar el width osea el ancho del formulario de número que sea más pequeño entre 60rem o el 100% */
+    margin: 0 auto; /*Para centrar el formulario usamos margin, como el padre no es un display flex lo puedo usar*/
+    padding: 2rem; /*Espacio hacia adentro en todas las direcciones*/
+    border-radius: 1rem;
+}
+
+.formulario fieldset{ /*Para corregir los bordes que agrega por defecto el navegador*/
+    border: none;
+}
+
+.formulario legend{
+    text-align: center;
+    font-size: 1.8rem; /*Tamaño de la fuente*/
+    text-transform: uppercase; /*Mayusculas*/
+    font-weight: 700; /*Negrita*/
+    margin-bottom: 2rem; /*Magen hacia abajo para que se separe del primer input*/
+    color: var(--grisClaro);
+}
+
+@media (min-width: 768px) { /*Dentro de un mq para que estas modificaciones apliquen solo cuando lleguen a ese tamaño*/
+    .contenedorInput{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto 20rem; /*Le digo que quiero que las dos primeras filas se posicionen auntomaticamente y la tercera que tenga
+        un tamaño predefinido*/
+        column-gap: 1rem; /*Separación entre columnas*/
+    }
+    .campo:nth-child(3),
+    .campo:nth-child(4){/*Esto lo que hace es que cuando tengo varias etiquetas que usan el mismo nombre de clase, dentro de los paréntesis coloco el
+        número de la etiqueta que quiero que se le aplique lo que deseo. Asi me evito de crear una nueva clase. En este caso quiero que la 3 y 4 se les
+        aplique lo mismo*/
+        grid-column: 1 / 3;/*Esto to uso para indicarle desde que columna hasta cual otra quiero que se extienda. Para hacer lo mismo con las columnas
+        se usa grid-row 3 / 4 */
+    }
+}
+
+.campo{
+    margin-bottom: 1rem; /*Separación hacia abajo*/
+}
+
+.campo label{
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block; /*Cada label toma el espacio disponible*/
+}
+/*
+.campo input[type="text"], 
+.campo input[type="number"]{
+    background-color: violet;
+Esta es una manera de ser especifico al momento de seleccionar que tipo de input quiero editar. otra manera es hacerlo con clases
+}
+*/
+
+.campo textarea{
+    height: 20rem;/*Altura de este campo de texto*/
+}
+.textoInput{
+    width: 100%; /*Para que todos tomen todo el tamaño disponible*/
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+.enviar .botton{ /*Todo lo que tiene boton lo sigo usando, pero si tiene la clase enviar quiero que el boton tome un arncho del 100%*/
+    width: 100%;
+}
+
+.footer{
+    text-align: center;
 }
